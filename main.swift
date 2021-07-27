@@ -4,12 +4,10 @@
 //  Created by deathlezz on 18/06/2021.
 //
 
-
 let dictionary: [( roman: String, decimal: Int )] = [     // dictionary
     ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400),
     ("C", 100), ("XC", 90), ("L", 50), ("XL", 40),
     ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1)]
-
 
 func decimalToRoman(value: Int) -> String {     // decimal -> roman
     
@@ -30,11 +28,9 @@ func decimalToRoman(value: Int) -> String {     // decimal -> roman
     return result
 }
 
-
 enum RomanError: Error {     // roman input error handling
     case badInput
 }
-
 
 func romanToDecimal(value: String) throws -> Int {     // roman -> decimal
     
