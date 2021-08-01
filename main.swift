@@ -4,19 +4,21 @@
 //  Created by deathlezz on 18/06/2021.
 //
 
-let dictionary: [( roman: String, decimal: Int )] = [     // dictionary
+// roman and decimal numbers array
+let array: [( roman: String, decimal: Int )] = [
     ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400),
     ("C", 100), ("XC", 90), ("L", 50), ("XL", 40),
     ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1)]
 
-func decimalToRoman(value: Int) -> String {     // decimal -> roman
+// decimal -> roman
+func decimalToRoman(value: Int) -> String {
     
     var result = ""
     var number = value
     
     while number > 0 {
         
-        for (roman, decimal) in dictionary {
+        for (roman, decimal) in array {
             
             if number - decimal >= 0 {
                 result += roman
@@ -28,11 +30,13 @@ func decimalToRoman(value: Int) -> String {     // decimal -> roman
     return result
 }
 
-enum RomanError: Error {     // roman input error handling
+// roman input error handling
+enum RomanError: Error {
     case badInput
 }
 
-func romanToDecimal(value: String) throws -> Int {     // roman -> decimal
+// roman -> decimal
+func romanToDecimal(value: String) throws -> Int {
     
     var result = 0
     var number = value
@@ -41,14 +45,14 @@ func romanToDecimal(value: String) throws -> Int {     // roman -> decimal
         
         var bool = false
 
-        for (roman, decimal) in dictionary {
+        for (roman, decimal) in array {
             
             if number.starts(with: roman) {
                 result += decimal
                 number.removeFirst(roman.count)
                 bool = true
                 break
-            } 
+            }
         }
         
         if bool == false {             // throw error if bad input found
@@ -108,29 +112,22 @@ func converter() {
                 
                 let input = readLine()
                 
-                if input != "" {     // avoid whitespace
+                // call the function
+                do {
+                    let RTD = try romanToDecimal(value: input!)
+                    print()
+                    print("Decimal:")
+                    print(RTD)
+                    return converter()
                     
-                    do {
-                        let RTD = try romanToDecimal(value: input!)
-                        print()
-                        print("Decimal:")
-                        print(RTD)
-                        return converter()
-                        
-                    } catch RomanError.badInput {     // bad input error
-                        print()
-                        print("* Incorrect value *")
-                        return userInput()
-                        
-                    } catch {                         // any other error
-                        print()
-                        print("* Unknown error found *")
-                        return userInput()
-                    }
-                    
-                } else {
+                } catch RomanError.badInput {     // bad input error
                     print()
                     print("* Incorrect value *")
+                    return userInput()
+                    
+                } catch {                         // any other error
+                    print()
+                    print("* Unknown error found *")
                     return userInput()
                 }
             }
