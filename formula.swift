@@ -4,11 +4,14 @@
 //  Created by deathlezz on 13/06/2021.
 //
 
+// decimal numbers array
 let decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
 
+// roman numbers array
 let roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
 
-func decimalToRoman(value: Int) -> String {     // decimal -> roman
+// decimal -> roman
+func decimalToRoman(value: Int) -> String {
     
     var result = ""
     var number = value
@@ -22,8 +25,7 @@ func decimalToRoman(value: Int) -> String {     // decimal -> roman
                 result += roman[index]
                 number -= decimal
                 
-                // print("Found \(roman[index]) for \(decimal)")
-
+                // print("Found \(roman[index]) for \(decimal)"
                 break
             }
         }
@@ -31,7 +33,8 @@ func decimalToRoman(value: Int) -> String {     // decimal -> roman
     return result
 }
 
-func romanToDecimal(value: String) -> Int {     // roman -> decimal
+// roman -> decimal
+func romanToDecimal(value: String) -> Int {
     
     var result = 0
     var number = value
@@ -46,7 +49,6 @@ func romanToDecimal(value: String) -> Int {     // roman -> decimal
                 number.removeFirst(roman.count)
                 
                 // print("Found \(decimal[index]) for \(roman)")
-                
                 break
             }
         }
