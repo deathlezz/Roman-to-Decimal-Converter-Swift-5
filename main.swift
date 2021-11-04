@@ -54,8 +54,8 @@ func romanToDecimal(value: String) throws -> Int {
                 break
             }
         }
-        
-        if bool == false {             // throw error if bad input found
+        // throw error when bad input will be found
+        if bool == false {
             throw RomanError.badInput
         }
     }
