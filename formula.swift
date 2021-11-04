@@ -56,5 +56,5 @@ func romanToDecimal(value: String) -> Int {
     return result
 }
 
-print(decimalToRoman(value: 2689))
-print(romanToDecimal(value: "MCCXXXIV"))
+print(decimalToRoman(value: 1234))     // MCCXXXIV
+print(romanToDecimal(value: "MCCXXXIV"))     // 1234
